@@ -1,35 +1,30 @@
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 
-import { Form, Formik, Field, ErrorMessage } from "formik";
-import { api } from "../../services/api";
+import { Formik } from "formik";
+
+import { schema } from "../../services/schema";
+import { User, handleSignIn } from "../../services/api";
 
 import {
   Container,
   Card,
-  ErrorMensage,
+  YupMessage,
   Title,
-  FormDiv,
+  FormContainer,
   Label,
   FormInput,
   Button,
 } from "./style";
 
-interface User {
-  email: string;
-  password: string;
-}
-
 export function Home() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [user, setUser] = useState<User>({} as User);
-  const [alert, setAlert] = useState(false);
-  const [formAlert, setFormAlert] = useState("");
 
   async function handleSubmit(values: User) {
     console.log(values);
 
-    // const response = await api.post;
+    const response = await handleSignIn(user);
+
+    console.log(response);
   }
 
   return (
@@ -38,36 +33,28 @@ export function Home() {
         <Title>b2bit</Title>
 
         <Formik
-          initialValues={{ email, password }}
-          validate={(values) => {
-            const errors = {};
-
-            if (!values.email) {
-              errors.email = "Campo Obrigatorio";
-            } else if (
-              !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
-            ) {
-              errors.email = "email invalido";
-            }
-
-            return errors;
-          }}
+          initialValues={{ email: "", password: "" }}
+          validationSchema={schema}
           onSubmit={(values) => {
             handleSubmit(values);
           }}
         >
           {() => (
-            <Form>
-              <Field type="email" name="email" />
+            <FormContainer>
+              <Label>E-mail</Label>
 
-              <ErrorMessage name="email" component="p" />
+              <FormInput type="email" name="email" />
 
-              <Field type="password" name="password" />
+              <YupMessage name="email" component="p" />
 
-              <ErrorMessage name="password" component="p" />
+              <Label>Password</Label>
+
+              <FormInput type="password" name="password" />
+
+              <YupMessage name="password" component="p" />
 
               <Button type="submit">Submit</Button>
-            </Form>
+            </FormContainer>
           )}
         </Formik>
       </Card>

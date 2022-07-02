@@ -13,8 +13,8 @@ export const Container = styled.main`
 export const Card = styled.div`
   width: 28rem;
   min-height: 32rem;
-  border: 1px solid clay;
-  box-shadow: 0 0 3em black;
+  border: 1px solid grey;
+  box-shadow: 0 0 3em grey;
   border-radius: 0.5rem;
   align-items: center;
   display: flex;
@@ -24,19 +24,18 @@ export const Card = styled.div`
 export const Title = styled.h1`
   font-size: 8rem;
   font-family: "Poppins", sans-serif;
-  color: blue;
   font-weight: bold;
   margin-top: 1rem;
 `;
 
-export const ErrorMensage = styled.p`
+export const YupMessage = styled(ErrorMessage)`
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
   margin-top: 0.2rem;
   color: red;
 `;
 
-export const FormDiv = styled.form`
+export const FormContainer = styled(Form)`
   display: flex;
   flex-direction: column;
   font-family: "Poppins", sans-serif;
@@ -45,6 +44,6 @@ export const FormDiv = styled.form`
 
 export const Label = styled.label``;
 
-export const FormInput = styled.input``;
+export const FormInput = styled(Field)``;
 
 export const Button = styled.button``;
