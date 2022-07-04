@@ -16,6 +16,7 @@ import {
   Button,
 } from "./style";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 export function Home() {
   const navigation = useNavigate();
@@ -28,7 +29,13 @@ export function Home() {
       console.log(response.data);
       localStorage.setItem("token", response.data.tokens.access);
       navigation("/profile");
-    } catch (err) {}
+    } catch (err) {
+      swal(
+        "Algo deu errado",
+        "Verifique as credenciais digitadas e tente novamente",
+        "error"
+      );
+    }
   }
 
   return (

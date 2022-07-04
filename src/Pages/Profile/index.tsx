@@ -20,6 +20,10 @@ export function Profile() {
     setUser(response);
   }
 
+  function handleLogout() {
+    localStorage.clear();
+  }
+
   useEffect(() => {
     handleFetchProfile();
   }, []);
@@ -27,7 +31,7 @@ export function Profile() {
   return (
     <>
       <Header>
-        <Button>Logout</Button>
+        <Button onClick={handleLogout}>Logout</Button>
       </Header>
       <Container>
         <Card>

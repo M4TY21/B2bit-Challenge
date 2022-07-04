@@ -23,12 +23,8 @@ async function handleSignIn(user: LoginUser) {
 }
 
 async function fetchUserInfo() {
-  try {
-    const response = await api.get("/profile/");
-    return response.data;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await api.get("/profile/");
+  return response.data;
 }
 
 export { api, handleSignIn, fetchUserInfo };
