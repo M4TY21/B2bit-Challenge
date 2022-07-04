@@ -1,22 +1,24 @@
 import { useState } from "react";
 
+import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
+import swal from "sweetalert";
 
-import { schema } from "../../services/schema";
 import { LoginUser, handleSignIn } from "../../services/api";
+import { schema } from "../../services/schema";
 
 import {
   Container,
   Card,
+  Logo,
   YupMessage,
-  Title,
   FormContainer,
   Label,
   FormInput,
   Button,
 } from "./style";
-import { useNavigate } from "react-router-dom";
-import swal from "sweetalert";
+
+import LogoImage from "../../assets/Logo.svg";
 
 export function Home() {
   const navigation = useNavigate();
@@ -41,7 +43,7 @@ export function Home() {
   return (
     <Container>
       <Card>
-        <Title>b2bit</Title>
+        <Logo src={LogoImage} alt="Logo" />
 
         <Formik
           initialValues={{ email: "", password: "" }}
@@ -54,13 +56,17 @@ export function Home() {
             <FormContainer>
               <Label>E-mail</Label>
 
-              <FormInput type="email" name="email" />
+              <FormInput type="email" name="email" placeholder="@gmail.com" />
 
               <YupMessage name="email" component="p" />
 
               <Label>Password</Label>
 
-              <FormInput type="password" name="password" />
+              <FormInput
+                type="password"
+                name="password"
+                placeholder="****************"
+              />
 
               <YupMessage name="password" component="p" />
 

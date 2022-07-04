@@ -1,6 +1,18 @@
 import { useEffect, useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 import { fetchUserInfo } from "../../services/api";
-import { Header, Button, Container, Card, Title } from "./style";
+
+import {
+  Header,
+  Button,
+  Container,
+  Card,
+  Title,
+  ProfileImg,
+  BoldTitle,
+  UserInfo,
+} from "./style";
 
 interface User {
   avatar: {
@@ -14,6 +26,8 @@ interface User {
 export function Profile() {
   const [user, setUser] = useState<User>({} as User);
 
+  const navigation = useNavigate();
+
   async function handleFetchProfile() {
     const response = await fetchUserInfo();
     console.log(response);
@@ -22,6 +36,7 @@ export function Profile() {
 
   function handleLogout() {
     localStorage.clear();
+    navigation("/");
   }
 
   useEffect(() => {
@@ -29,15 +44,28 @@ export function Profile() {
   }, []);
 
   return (
-    <>
+    <Container>
       <Header>
         <Button onClick={handleLogout}>Logout</Button>
       </Header>
-      <Container>
-        <Card>
-          <Title>{user.name}</Title>
-        </Card>
-      </Container>
-    </>
+      <Card>
+        <Title>Profile picture</Title>
+
+        <ProfileImg
+          src={user.avatar.image_high_url}
+          alt={`Foto de perfil de ${user.name} ${user.last_name}`}
+        />
+
+        <Title>Your </Title>
+        <BoldTitle>Name</BoldTitle>
+
+        <UserInfo>{`${user.name} ${user.last_name}`}</UserInfo>
+
+        <Title>Your </Title>
+        <BoldTitle>E-mail</BoldTitle>
+
+        <UserInfo>{user.email}</UserInfo>
+      </Card>
+    </Container>
   );
 }
