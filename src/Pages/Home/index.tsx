@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Formik } from "formik";
 
 import { schema } from "../../services/schema";
-import { User, handleSignIn } from "../../services/api";
+import { LoginUser, handleSignIn } from "../../services/api";
 
 import {
   Container,
@@ -15,16 +15,20 @@ import {
   FormInput,
   Button,
 } from "./style";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
-  const [user, setUser] = useState<User>({} as User);
+  const navigation = useNavigate();
 
-  async function handleSubmit(values: User) {
+  async function handleSubmit(values: LoginUser) {
     console.log(values);
 
-    const response = await handleSignIn(user);
-
-    console.log(response);
+    try {
+      const response = await handleSignIn(values);
+      console.log(response.data);
+      localStorage.setItem("token", response.data.tokens.access);
+      navigation("/profile");
+    } catch (err) {}
   }
 
   return (
@@ -53,7 +57,7 @@ export function Home() {
 
               <YupMessage name="password" component="p" />
 
-              <Button type="submit">Submit</Button>
+              <Button type="submit">Sign In</Button>
             </FormContainer>
           )}
         </Formik>

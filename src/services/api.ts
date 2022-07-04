@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export interface User {
+export interface LoginUser {
   email: string;
   password: string;
 }
 
 const api = axios.create({
-  baseURL: "https://frontendproject.b2bit.company/account/",
+  baseURL: "https://frontendproject.b2bit.company/account",
 });
 
 api.interceptors.request.use(async (config) => {
@@ -17,9 +17,18 @@ api.interceptors.request.use(async (config) => {
   return config;
 });
 
-async function handleSignIn(user: User) {
-  const response = await api.post("tokens/", user);
+async function handleSignIn(user: LoginUser) {
+  const response = await api.post("/tokens/", user);
   return response;
 }
 
-export { api, handleSignIn };
+async function fetchUserInfo() {
+  try {
+    const response = await api.get("/profile/");
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export { api, handleSignIn, fetchUserInfo };
