@@ -2,12 +2,14 @@ import styled from "styled-components";
 
 export const Header = styled.header`
   position: absolute;
-  width: 100%;
-  height: 4.375rem;
-  background: #fff;
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  width: 100%;
+  height: 4.375rem;
+
+  background: #fff;
+
   top: 0;
   z-index: 0;
 `;
@@ -39,17 +41,17 @@ export const Container = styled.main`
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   background: #f1f5f9;
 `;
 
 export const Card = styled.div`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   width: 80%;
   max-width: 22rem;
   height: 20rem;
-
-  align-items: center;
-  display: flex;
-  flex-direction: column;
 
   border-radius: 1rem;
   background: #fdfdfd;
@@ -57,25 +59,27 @@ export const Card = styled.div`
 `;
 
 export const Title = styled.h1`
+  margin-top: 1.8rem;
+
   font-family: "Nunito";
   font-weight: 600;
   font-size: 0.75rem;
   color: #2f2f2f;
-  margin-top: 1.8rem;
 `;
 
 export const ProfileImg = styled.img`
   width: 58px;
   height: 56px;
-  border-radius: 0.5rem;
   margin-top: 0.8rem;
+
+  border-radius: 0.5rem;
 `;
 
 export const UserInfoContainer = styled.div`
   display: flex;
-  margin-top: 1.25rem;
   width: 83%;
   flex-direction: column;
+  margin-top: 1.25rem;
 `;
 
 export const Content = styled.div`
@@ -90,18 +94,19 @@ export const Content = styled.div`
 
 export const BoldContent = styled.p`
   padding-left: 0.25rem;
+
   font-weight: 700;
 `;
 
 export const UserInfo = styled.div`
   display: flex;
-  background: #f4f4f4;
-  height: 3rem;
-  padding-left: 1rem;
   justify-content: start;
   align-items: center;
+  height: 3rem;
+  padding-left: 1rem;
   margin-bottom: 1.25rem;
 
+  background: #f4f4f4;
   border: 0px;
   border-radius: 0.5rem;
 

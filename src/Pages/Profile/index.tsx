@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
-import { useNavigate } from "react-router-dom";
-import { fetchUserInfo } from "../../services/api";
+import { useAuth } from "../../Hooks/auth";
 
 import {
   Header,
@@ -16,40 +15,17 @@ import {
   UserInfoContainer,
 } from "./style";
 
-interface User {
-  name: string;
-  last_name: string;
-  email: string;
-
-  avatar: {
-    image_high_url: string;
-  };
-}
-
 export function Profile() {
-  const [user, setUser] = useState<User>({} as User);
-
-  const navigation = useNavigate();
-
-  async function handleFetchProfile() {
-    const response = await fetchUserInfo();
-    console.log(response);
-    setUser(response);
-  }
-
-  function handleLogout() {
-    localStorage.clear();
-    navigation("/");
-  }
+  const { user, fetchUserInfo, signOut } = useAuth();
 
   useEffect(() => {
-    handleFetchProfile();
+    fetchUserInfo();
   }, []);
 
   return (
     <Container>
       <Header>
-        <Button onClick={handleLogout}>Logout</Button>
+        <Button onClick={signOut}>Logout</Button>
       </Header>
       <Card>
         <Title>Profile picture</Title>

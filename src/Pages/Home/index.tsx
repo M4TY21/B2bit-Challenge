@@ -1,10 +1,6 @@
-import { useState } from "react";
-
-import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import swal from "sweetalert";
 
-import { LoginUser, handleSignIn } from "../../services/api";
 import { schema } from "../../services/schema";
 
 import {
@@ -19,18 +15,16 @@ import {
 } from "./style";
 
 import LogoImage from "../../assets/Logo.svg";
+import { LoginUser, useAuth } from "../../Hooks/auth";
 
 export function Home() {
-  const navigation = useNavigate();
+  const { handleSignIn } = useAuth();
 
   async function handleSubmit(values: LoginUser) {
     console.log(values);
 
     try {
-      const response = await handleSignIn(values);
-      console.log(response.data);
-      localStorage.setItem("token", response.data.tokens.access);
-      navigation("/profile");
+      await handleSignIn(values);
     } catch (err) {
       swal(
         "Algo deu errado",
