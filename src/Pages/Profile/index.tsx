@@ -10,17 +10,20 @@ import {
   Card,
   Title,
   ProfileImg,
-  BoldTitle,
+  Content,
+  BoldContent,
   UserInfo,
+  UserInfoContainer,
 } from "./style";
 
 interface User {
-  avatar: {
-    image_high_url: string;
-  };
   name: string;
   last_name: string;
   email: string;
+
+  avatar: {
+    image_high_url: string;
+  };
 }
 
 export function Profile() {
@@ -56,15 +59,19 @@ export function Profile() {
           alt={`Foto de perfil de ${user.name} ${user.last_name}`}
         />
 
-        <Title>Your </Title>
-        <BoldTitle>Name</BoldTitle>
+        <UserInfoContainer>
+          <Content>
+            Your <BoldContent>Name</BoldContent>
+          </Content>
 
-        <UserInfo>{`${user.name} ${user.last_name}`}</UserInfo>
+          <UserInfo>{`${user.name} ${user.last_name}`}</UserInfo>
 
-        <Title>Your </Title>
-        <BoldTitle>E-mail</BoldTitle>
+          <Content>
+            Your <BoldContent>E-mail</BoldContent>
+          </Content>
 
-        <UserInfo>{user.email}</UserInfo>
+          <UserInfo>{user.email}</UserInfo>
+        </UserInfoContainer>
       </Card>
     </Container>
   );

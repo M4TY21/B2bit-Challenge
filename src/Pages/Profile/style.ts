@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Header = styled.nav`
+export const Header = styled.header`
   position: absolute;
   width: 100%;
   height: 4.375rem;
@@ -45,7 +45,7 @@ export const Container = styled.main`
 export const Card = styled.div`
   width: 80%;
   max-width: 22rem;
-  height: 19rem;
+  height: 20rem;
 
   align-items: center;
   display: flex;
@@ -56,24 +56,57 @@ export const Card = styled.div`
   box-shadow: 0px 0.125rem 0.625rem rgba(0, 0, 0, 0.1);
 `;
 
-export const Title = styled.h1``;
+export const Title = styled.h1`
+  font-family: "Nunito";
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #2f2f2f;
+  margin-top: 1.8rem;
+`;
 
 export const ProfileImg = styled.img`
   width: 58px;
   height: 56px;
+  border-radius: 0.5rem;
+  margin-top: 0.8rem;
 `;
 
-export const BoldTitle = styled.h1``;
+export const UserInfoContainer = styled.div`
+  display: flex;
+  margin-top: 1.25rem;
+  width: 83%;
+  flex-direction: column;
+`;
 
-export const UserInfo = styled.div`
-  background: #f1f1f1;
-  text-align: start;
-  height: 3rem;
-  border: 0px;
-  border-radius: 0.5rem;
-  color: #999999;
+export const Content = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 0.5rem;
+
+  font-size: 0.8rem;
   font-family: "Nunito", sans-serif;
   font-weight: 400;
-  padding-left: 1.2rem;
-  margin-bottom: 1.5rem;
+`;
+
+export const BoldContent = styled.p`
+  padding-left: 0.25rem;
+  font-weight: 700;
+`;
+
+export const UserInfo = styled.div`
+  display: flex;
+  background: #f4f4f4;
+  height: 3rem;
+  padding-left: 1rem;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 1.25rem;
+
+  border: 0px;
+  border-radius: 0.5rem;
+
+  font-family: "Nunito", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: #262626;
 `;

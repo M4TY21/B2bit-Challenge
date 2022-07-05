@@ -24,6 +24,7 @@ async function handleSignIn(user: LoginUser) {
 
 async function fetchUserInfo() {
   const response = await api.get("/profile/");
+  console.log(response.data);
   return response.data;
 }
 
