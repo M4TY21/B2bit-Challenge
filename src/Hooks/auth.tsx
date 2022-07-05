@@ -12,7 +12,7 @@ interface User {
   last_name: string;
   email: string;
 
-  avatar: {
+  avatar?: {
     image_high_url: string;
   };
 }
@@ -21,17 +21,19 @@ interface AuthProviderProps {
   children: ReactNode;
 }
 
-type AuthContextTypes = {
+interface AuthContextTypes {
   user: User;
+  loading: boolean;
   handleSignIn: (LoginUser: LoginUser) => Promise<void>;
   fetchUserInfo: () => Promise<void>;
   signOut: () => Promise<void>;
-};
+}
 
 export const AuthContext = createContext({} as AuthContextTypes);
 
 function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User>({} as User);
+  const [loading, setLoading] = useState(true);
 
   async function handleSignIn(LoginUser: LoginUser) {
     const response = await api.post("/tokens/", LoginUser);
@@ -46,11 +48,12 @@ function AuthProvider({ children }: AuthProviderProps) {
   async function fetchUserInfo() {
     const response = await api.get("/profile/");
     setUser(response.data);
+    setLoading(false);
   }
 
   return (
     <AuthContext.Provider
-      value={{ user, handleSignIn, fetchUserInfo, signOut }}
+      value={{ user, loading, handleSignIn, fetchUserInfo, signOut }}
     >
       {children}
     </AuthContext.Provider>

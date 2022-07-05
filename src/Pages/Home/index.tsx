@@ -16,15 +16,18 @@ import {
 
 import LogoImage from "../../assets/Logo.svg";
 import { LoginUser, useAuth } from "../../Hooks/auth";
+import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const { handleSignIn } = useAuth();
+  const navigation = useNavigate();
 
   async function handleSubmit(values: LoginUser) {
     console.log(values);
 
     try {
       await handleSignIn(values);
+      navigation("/profile");
     } catch (err) {
       swal(
         "Algo deu errado",

@@ -1,4 +1,28 @@
+import { CircleNotch } from "phosphor-react";
 import styled from "styled-components";
+
+export const Container = styled.main`
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  background: #f1f5f9;
+`;
+
+export const Load = styled(CircleNotch)`
+  animation: spin 1s linear infinite;
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+`;
 
 export const Header = styled.header`
   position: absolute;
@@ -33,16 +57,6 @@ export const Button = styled.button`
   :hover {
     filter: brightness(0.9);
   }
-`;
-
-export const Container = styled.main`
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-
-  background: #f1f5f9;
 `;
 
 export const Card = styled.div`
