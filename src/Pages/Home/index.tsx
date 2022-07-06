@@ -1,7 +1,8 @@
+import { LoginUser, useAuth } from "../../hooks/auth";
+import { schema } from "../../services/schema";
+import { useNavigate } from "react-router-dom";
 import { Formik } from "formik";
 import swal from "sweetalert";
-
-import { schema } from "../../services/schema";
 
 import {
   Container,
@@ -12,19 +13,15 @@ import {
   Label,
   FormInput,
   Button,
-} from "./style";
+} from "./styles";
 
 import LogoImage from "../../assets/Logo.svg";
-import { LoginUser, useAuth } from "../../Hooks/auth";
-import { useNavigate } from "react-router-dom";
 
 export function Home() {
   const { handleSignIn } = useAuth();
   const navigation = useNavigate();
 
   async function handleSubmit(values: LoginUser) {
-    console.log(values);
-
     try {
       await handleSignIn(values);
       navigation("/profile");

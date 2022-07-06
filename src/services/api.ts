@@ -5,11 +5,22 @@ const api = axios.create({
 });
 
 api.interceptors.request.use(async (config) => {
-  const token = localStorage.getItem("token");
+  const acess_token = localStorage.getItem("acess_token");
   if (config.headers) {
-    config.headers.Authorization = `Bearer ${token}`;
+    config.headers.Authorization = `Bearer ${acess_token}`;
   }
   return config;
 });
+
+api.interceptors.response.use(
+  (response) => {
+    return response;
+  },
+  async function (error) {
+    if (error.response.status === 401) {
+      localStorage.clear();
+    }
+  }
+);
 
 export { api };

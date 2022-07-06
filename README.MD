@@ -40,14 +40,10 @@ instalando bibliotecas e dependências do projeto:
 
 ## Rodando projeto
 
-Após clonar o repositório e instalar as dependências necessárias, para rodar o projeto basta usar os seguintes comandos:
+Após clonar o repositório e instalar as dependências necessárias, para rodar o projeto basta usar o seguinte comando:
 
 ```bash
-  npm run build
-```
-
-```bash
-  npm start
+  npm run dev
 ```
 
 ## Tecnologias e bibliotecas utilizadas

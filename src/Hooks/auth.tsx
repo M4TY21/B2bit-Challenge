@@ -37,12 +37,12 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   async function handleSignIn(LoginUser: LoginUser) {
     const response = await api.post("/tokens/", LoginUser);
-    localStorage.setItem("token", response.data.tokens.access);
+    localStorage.setItem("acess_token", response.data.tokens.access);
   }
 
   async function signOut() {
     setUser({} as User);
-    localStorage.removeItem("token");
+    localStorage.clear();
   }
 
   async function fetchUserInfo() {

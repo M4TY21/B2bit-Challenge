@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { useAuth } from "../../Hooks/auth";
+import { useAuth } from "../../hooks/auth";
 
 import {
   Container,
@@ -15,7 +15,7 @@ import {
   BoldContent,
   UserInfo,
   UserInfoContainer,
-} from "./style";
+} from "./styles";
 
 export function Profile() {
   const { user, loading, fetchUserInfo, signOut } = useAuth();

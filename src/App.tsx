@@ -1,19 +1,12 @@
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-
-import { Home } from "./Pages/Home";
-import { Profile } from "./Pages/Profile";
+import { GlobalStyle } from "./styles/global";
+import { AuthProvider } from "./hooks/auth";
+import { AppRoutes } from "./routes";
 
 export function App() {
-  const token = localStorage.getItem("token");
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/profile"
-          element={token ? <Profile /> : <Navigate to="/" />}
-        />
-      </Routes>
-    </BrowserRouter>
+    <AuthProvider>
+      <GlobalStyle />
+      <AppRoutes />
+    </AuthProvider>
   );
 }
