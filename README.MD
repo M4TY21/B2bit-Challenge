@@ -1,10 +1,10 @@
 # Desafio Estagio - Front-end ReactJS B2bit
 
-O projeto consiste em criar uma interface de login e perfil do usuario logado usando ReactJS.
+O projeto consiste em criar uma interface de login e perfil do usuário logado usando ReactJS.
 
 ## Clone o repositório e instale as dependências
 
-Lembre-se, para rodar a aplicação é necessário ter instalado o Node.Js e as dependências usadas.
+Para rodar a aplicação é necessário ter instalado o Node.Js e as dependências usadas.
 
 ### Instalando Node.Js
 
@@ -15,24 +15,24 @@ Para instalar siga as instruções [Documentação do Node.Js](https://nodejs.or
 Com método HTTPS:
 
 ```git
-git clone https://github.com/M4TY21/OneBlue-challenge.git
+git clone https://github.com/M4TY21/B2bit-Challenge.git
 ```
 
 Com método SSH:
 
 ```git
-git clone git@github.com:M4TY21/OneBlue-challenge.git
+git clone git@github.com:M4TY21/B2bit-Challenge.git
 ```
 
 Depois disso, acesse a pasta do repositório pelo terminal:
 
 ```bash
-  cd OneBlue-challenge
+  cd B2bit-Challenge
 ```
 
 ### Instalando as dependências
 
-instalando todas bibliotecas e dependências do projeto:
+instalando bibliotecas e dependências do projeto:
 
 ```bash
   npm install
@@ -40,7 +40,7 @@ instalando todas bibliotecas e dependências do projeto:
 
 ## Rodando projeto
 
-Após clonar o repositório e instalar as dependências necessárias, para rodar o projeto basta usar o seguinte comando:
+Após clonar o repositório e instalar as dependências necessárias, para rodar o projeto basta usar os seguintes comandos:
 
 ```bash
   npm run build
@@ -52,8 +52,10 @@ Após clonar o repositório e instalar as dependências necessárias, para rodar
 
 ## Tecnologias e bibliotecas utilizadas
 
-- Axios / Foi utilizado para fazer o POST da API na aplicação
+- Axios
 - Yup
-- React-router-dom / Foi utilizado para fazer a navegação da pagina de cadastro para a de login
+- React-router-dom
 - Styled components
-- MUI
+- Formik
+- sweetalert
+- phosphor-react

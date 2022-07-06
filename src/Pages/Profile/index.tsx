@@ -21,14 +21,14 @@ export function Profile() {
   const { user, loading, fetchUserInfo, signOut } = useAuth();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    fetchUserInfo();
-  }, []);
-
   async function handleLogout() {
     await signOut();
     navigate("/");
   }
+
+  useEffect(() => {
+    fetchUserInfo();
+  }, []);
 
   return (
     <Container>
