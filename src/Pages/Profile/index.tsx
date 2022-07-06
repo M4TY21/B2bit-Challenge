@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 import { useAuth } from "../../hooks/auth";
 
@@ -19,6 +19,9 @@ import {
 
 export function Profile() {
   const { user, loading, fetchUserInfo, signOut } = useAuth();
+
+  const acess_token = localStorage.getItem("acess_token");
+
   const navigate = useNavigate();
 
   async function handleLogout() {
@@ -29,6 +32,10 @@ export function Profile() {
   useEffect(() => {
     fetchUserInfo();
   }, []);
+
+  if (!acess_token) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <Container>
